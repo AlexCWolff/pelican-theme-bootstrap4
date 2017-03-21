@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous" />
+
+    <!-- Pygments for code styling -->
+    <link href="{{ SITEURL }}/static/pygments.css" rel="stylesheet" />
+
+    <!-- Custom style -->
+    <link rel="stylesheet" href="{{ SITEURL }}/static/blog.css" type="text/css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{{ SITEURL }}/static/favicon.ico"/>
+
+    <!-- RSS Feed -->
+    {% if FEED_RSS %}
+      <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+    {% endif %}
+  </head>
+
+  <body>
+    <!-- Wrapper for sticky footer -->
+    <div id="wrap">
+        <div id="main">
+            <!-- Navbar -->
+            <nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{{ SITEURL }}/index.html">
+                {{ SITENAME }}
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ SITEURL }}/archives.html">
+                    Archives
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ SITEURL }}/categories.html">
+                    Categories
+                    </a>
+                </li>
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for page in pages %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ SITEURL }}/{{ page.url }}">
+                        {{ page.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+                {% if RSS_FEED %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
+                        RSS Feed
+                        </a>
+                    </li>
+                {% endif %}
+                </ul>
+            </div>
+            </nav>
+
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+
+    <footer>
+            Copyright 2016 Alexander Wolff.<br />   
+            For legal/licensing info please see the <a href="{{ SITEURL }}/pages/about.html">About</a> page.<br />
+            This site is powered by <a href="http://docs.getpelican.com/en/stable/">Pelican</a>, <a href="https://pages.github.com/">Github Pages</a>, and <a href="http://getbootstrap.com/">Bootstrap</a>.
+    </footer>
+
+    <!-- Javascript, placed at the end of the document so the pages load faster.
+         These fallbacks add unnecessary complexity, if you're not paranoid like me then just use the CDNs. -->
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- jQuery local fallback -->
+    <script>window.jQuery || document.write('<script src="{{ SITEURL }}/static/jquery-3.1.1.min.js"><\/script>')</script>
+    <!-- Bootstrap & Tether JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <!-- Bootstrap & Tether JS local fallback -->
+    <script>
+      if (typeof($.fn.modal) === 'undefined') {
+        document.write('<script src="{{ SITEURL }}/static/tether.min.js"><\/script>')
+        document.write('<script src="{{ SITEURL }}/static/bootstrap.min.js"><\/script>')
+      }
+    </script>
+
+    <!-- Bootstrap CSS local fallback -->
+    <div id="bootstrapCssTest" class="hidden"></div>
+    <script>
+      $(function() {
+        if ($('#bootstrapCssTest').is(':visible')) {
+          $("head").prepend('<link rel="stylesheet" href="{{ SITEURL }}/static/bootstrap.min.css">');
+        }
+      });
+    </script>
+
+    {% include 'analytics.html' %}
+    {% include 'disqus_script.html' %}
+
+  </body>
+</html>

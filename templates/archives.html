@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }} - Archives{% endblock %}
+{% block content %}
+<article>
+    <header>
+        <h1 class="page-title text-center">Archives</h1>
+    </header>
+
+    <div class="page-content text-left">
+    {% for article in dates %}
+        <div class="d-flex flex-row justify-content-left">
+            <div class="p-2">{{ article.date|strftime('%a, %d %b, %Y') }}</div>
+            <div class="p-2"> - </div>
+            <div class="p-2"><a href='{{ article.url }}'>{{ article.title }}</a></div>
+        </div>
+    {% endfor %}
+    </div>
+</article>
+{% endblock %}

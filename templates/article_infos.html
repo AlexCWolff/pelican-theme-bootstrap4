@@ -1,0 +1,24 @@
+<div class="card-block">
+    <p class="card-subtitle mb-2 text-muted">
+        Date: {{ article.date|strftime('%a, %d %b, %Y') }}
+        <br />
+        {% if article.author %}
+            By:
+            <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
+        {% endif %}
+        <br />
+        Category:
+        <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        <br />
+        {% if article.tags %}
+            Tags:
+            {% for tag in article.tags %}
+                {% if tag != article.tags[-1] %} 
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}, </a>
+                {% else %}
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </p>
+</div>
