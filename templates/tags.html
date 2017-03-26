@@ -6,7 +6,7 @@
         <h1 class="page-title text-center">Tags</h1>
     </header>
 
-    <div class="page-content text-left">
+    <div class="page-content text-center">
     {% for tag in tag_cloud %}
         <div class="d-flex flex-row justify-content-left">
             <div class="p-2 tag-{{ tag.1 }}"><a href='{{ SITEURL }}/{{ tag.0.url }}'>{{ tag.0 }}</a></div>
