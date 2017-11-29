@@ -2,21 +2,19 @@
 {% block content %}
 {% if articles %}
     {% for article in (articles_page.object_list if articles_page else articles) %}
-        <div class="card article-list">
-            <h2 class="card-title">
-                <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-            </h2>
-            {% include 'article_infos.html' %}
-            <p class="card-text">
-                {{ article.summary }}
-                <a href="{{ SITEURL }}/{{ article.url }}">
-                    <button class="btn btn-secondary btn-block">
-                        more ...
-                    </button>
-                </a>
-            </p>
-        </div>
-        <hr>
+        <div class="border rounded m-4 p-4">
+            <header>
+                {% include 'article_infos.html' %}
+            </header>
+            <article>
+                {{ article.content }}
+            </article>
+            <a href="{{ SITEURL }}/{{ article.url }}">
+                <button class="btn btn-secondary btn-lg btn-block mt-4">
+                    Click through to article for comments.
+                </button>
+            </a>
+        </div> 
     {% endfor %}
 {% endif %}
 

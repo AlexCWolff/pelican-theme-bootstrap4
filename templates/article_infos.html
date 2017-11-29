@@ -1,24 +1,28 @@
-<div class="card-block">
-    <p class="card-subtitle mb-2 text-muted">
-        Date: {{ article.date|strftime('%a, %d %b, %Y') }}
-        <br />
-        {% if article.author %}
-            By:
-            <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-        {% endif %}
-        <br />
-        Category:
-        <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-        <br />
-        {% if article.tags %}
-            Tags:
-            {% for tag in article.tags %}
-                {% if tag != article.tags[-1] %} 
-                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}, </a>
-                {% else %}
-                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </p>
+<h2>
+    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+    {{ article.title }}</a>
+</h2>
+<div class="card border-0">
+    <div class="card-body">
+        <p class="card-subtitle mb-2 text-muted">
+            By: <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
+        </p>
+        <p class="card-text">
+            Published: {{ article.date|strftime('%d %b %Y') }}<br />
+            {% if article.modified %}
+                Modified: {{ article.modified|strftime('%d %b %Y') }}<br />
+            {% endif %}
+            Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a><br />
+            {% if article.tags %}
+                Tags:
+                {% for tag in article.tags %}
+                    {% if tag != article.tags[-1] %} 
+                        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}, </a>
+                    {% else %}
+                        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </p>
+    </div>
 </div>

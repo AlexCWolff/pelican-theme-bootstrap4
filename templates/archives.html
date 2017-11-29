@@ -1,19 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{ SITENAME }} - Archives{% endblock %}
 {% block content %}
-<article>
-    <header>
-        <h1 class="page-title text-center">Archives</h1>
+    <header class="mt-4">
+        <h1 class="text-center">Archives</h1>
     </header>
-
-    <div class="page-content">
-    {% for article in dates %}
-        <div class="d-flex flex-row justify-content-center">
-            <div class="p-2">{{ article.date|strftime('%a, %d %b, %Y') }}</div>
-            <div class="p-2"> - </div>
-            <div class="p-2"><a href='{{ article.url }}'>{{ article.title }}</a></div>
-        </div>
-    {% endfor %}
-    </div>
-</article>
+    <article>
+        {% for article in dates %}
+            {{ article.date|strftime('%d %b, %Y') }} - <a href='{{ article.url }}'>{{ article.title }}</a>
+        {% endfor %}
+    </article>
 {% endblock %}
