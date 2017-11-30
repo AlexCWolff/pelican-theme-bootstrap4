@@ -4,10 +4,8 @@
 </h2>
 <div class="card border-0">
     <div class="card-body">
-        <p class="card-subtitle mb-2 text-muted">
-            By: <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-        </p>
         <p class="card-text">
+            By: <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
             Published: {{ article.date|strftime('%d %b %Y') }}<br />
             {% if article.modified %}
                 Modified: {{ article.modified|strftime('%d %b %Y') }}<br />
