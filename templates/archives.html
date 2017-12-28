@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% block title %}{{ SITENAME }} - Archives{% endblock %}
 {% block content %}
-<div class="container rounded mt-4 mb-4 p-4">
+<div class="container mt-4 mb-4 p-4">
     <header>
-        <h1 class="text-center">Archives</h1>
+        <h1 class="display-3 text-center">Archives</h1>
     </header>
     <!-- TODO: Turn in to 2+ column flexbox -->
     <section>
-        <ul>
-        {% for article in dates %}
-            <li>
-                {{ article.date|strftime('%d %b, %Y') }} - <a href='{{ article.url }}'>{{ article.title }}</a>
-            </li>
-        {% endfor %}
+        <ul class="list-unstyled">
+            {% for article in dates %}
+                <li>
+                    {{ article.date|strftime('%d %b %Y') }} - <a href='{{ article.url }}'>{{ article.title }}</a>
+                </li>
+            {% endfor %}
         </ul>
     </section>
 </div>
