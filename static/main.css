@@ -11,7 +11,7 @@ ul { list-style-type: none }
 h1 { margin-top: .5rem; margin-bottom: .5rem }
 h2, h3, h4, h5, h6 { margin-top: 1.25rem; margin-bottom: 1.25rem }
 h2 { font-size: 1.5rem }
-.display-4 { font-size: 2rem }
+.display-4 { font-size: 2.5rem }
 
 
 /* Pygments Code Highlighting */
